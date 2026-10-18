@@ -1,0 +1,31 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+left to right direction
+actor Reportante
+actor Voluntario
+actor Coordinador
+actor Veterinario
+actor "Hogar temporal" as Hogar
+rectangle "Refugio Comunitario" {
+usecase "Comunicar hallazgo" as Reportar
+usecase "Aceptar tarea de rescate" as Aceptar
+usecase "Consultar seguimiento" as Consultar
+usecase "Validar y asignar caso" as Validar
+usecase "Registrar evolución" as Evolucion
+usecase "Ofrecer acogida temporal" as Acogida
+usecase "Verificar especie, aptitud y cupo" as Verificar
+}
+Reportante -- Reportar
+Voluntario -- Aceptar
+Voluntario -- Consultar
+Coordinador -- Validar
+Coordinador -- Acogida
+Veterinario -- Evolucion
+Hogar -- Acogida
+Acogida ..> Verificar : <<include>>
+note bottom of Verificar : Fauna silvestre: derivación especializada;
+no acogida ni adopción doméstica.
+
+@enduml
