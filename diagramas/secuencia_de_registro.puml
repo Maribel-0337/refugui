@@ -1,0 +1,31 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+actor Coordinador
+participant Controlador
+participant ConstructorExpediente as Constructor
+participant PuertoCasos as Repositorio
+participant BusComunidad as Bus
+participant AvisoVoluntariado as Aviso
+Coordinador -> Controlador : registrar(datos)
+Controlador -> Constructor : conAnimal(especie)
+Controlador -> Constructor : conUbicacion(lugar)
+Controlador -> Constructor : construir()
+alt datos válidos
+Constructor --> Controlador : expediente válido
+Controlador -> Repositorio : guardar(expediente)
+Repositorio --> Controlador : guardado confirmado
+Controlador -> Bus : publicar(nuevoRescate)
+loop cada observador suscrito
+Bus -> Aviso : recibir(evento)
+end
+Controlador --> Coordinador : identificador
+else datos incompletos
+Constructor --> Controlador : error de validación
+Controlador --> Coordinador : solicitar corrección
+end
+note over Bus,Aviso : Fallos de canal se registran para reintentar.
+No se revierte el guardado del expediente.
+
+@enduml
