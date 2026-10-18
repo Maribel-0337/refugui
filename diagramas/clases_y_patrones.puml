@@ -1,0 +1,62 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+class ConstructorExpediente {
++conAnimal(especie): ConstructorExpediente
++conUbicacion(lugar): ConstructorExpediente
++conReportante(persona): ConstructorExpediente
++construir(): Expediente
+}
+class Expediente {
+-especie
+-ubicacion
+-estado
+-historial
++asignar(persona)
++registrarEvolucion(evaluacion)
+}
+ConstructorExpediente ..> Expediente : construye y valida
+interface OrdenCaso {
++validar(): bool
++ejecutar(): Resultado
+}
+class AsignarResponsable
+class RegistrarEvolucion
+OrdenCaso <|.. AsignarResponsable
+OrdenCaso <|.. RegistrarEvolucion
+AsignarResponsable --> Expediente : receptor
+RegistrarEvolucion --> Expediente : receptor
+class GestorOrdenes {
++procesar(orden)
++registrarAuditoria()
+}
+GestorOrdenes --> OrdenCaso
+interface PuertoCasos {
++guardar(expediente)
++buscar(id): Expediente
+}
+GestorOrdenes --> PuertoCasos
+class BusComunidad {
++suscribir(observador)
++publicar(evento)
+}
+GestorOrdenes --> BusComunidad : tras persistir
+interface Observador {
++recibir(evento)
+}
+class AvisoVoluntariado
+class AvisoHogar
+Observador <|.. AvisoVoluntariado
+Observador <|.. AvisoHogar
+BusComunidad o-- "0..*" Observador
+class Responsable
+Expediente "0..*" --> "0..*" Responsable
+note top of ConstructorExpediente : Builder: atributos obligatorios y especies válidas.
+No crea un expediente incompleto.
+note right of RegistrarEvolucion : Valida rol veterinario y transición.
+La fauna silvestre no pasa a adopción.
+note bottom of GestorOrdenes : La orden no guarda ni envía mensajes.
+El gestor persiste y luego publica el evento.
+
+@enduml
