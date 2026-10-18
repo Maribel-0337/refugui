@@ -1,0 +1,33 @@
+@startuml
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+package "Aplicación MVC" {
+component "Vista comunitaria" as Vista
+component "Controladores" as Control
+component "Modelo: expediente, órdenes y reglas" as Modelo
+interface PuertoCasos
+component "BusComunidad" as Bus
+Vista --> Control
+Control --> Modelo
+Control --> PuertoCasos
+Control --> Bus : después de guardar
+}
+component "Adaptación de datos" as Datos
+Datos ..|> PuertoCasos
+component "AvisoVoluntariado / AvisoHogar" as Canales
+Bus --> Canales : Observador
+package "Gitflow de recursos" {
+artifact "feature/*" as Feature
+artifact develop
+artifact "release/entrega" as Release
+artifact master
+Feature --> develop : integrar diagrama
+ develop --> Release : preparar entrega
+Release --> master : publicar
+Release --> develop : sincronizar
+}
+note bottom of Modelo : Diseño lógico. No hay aplicación desplegada.
+La fauna silvestre sigue derivación especializada.
+
+@enduml
