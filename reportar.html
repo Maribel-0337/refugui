@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Formulario comunitario para registrar una alerta de rescate animal."
+    >
+    <title>Registrar alerta | Refugui Comunitario</title>
+</head>
+<body>
+    <header>
+        <img
+            src="assets/img/logo-refugui.png"
+            alt="Logo de Refugui Comunitario"
+            width="115"
+        >
+
+        <h1>Refugui Comunitario</h1>
+        <p>Red colaborativa para la atención y protección animal.</p>
+
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li>
+                    <a href="reportar.html" aria-current="page">
+                        Registrar alerta
+                    </a>
+                </li>
+                <li><a href="rescates.html">Seguimiento de casos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Nueva alerta comunitaria</h2>
+            <p>
+                Registre la información disponible para que la red determine
+                la prioridad y coordine la atención del animal.
+            </p>
+
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Información del hallazgo</legend>
+
+                    <p>
+                        <label for="titulo-caso">
+                            Título del caso o nombre provisional:
+                        </label>
+                        <input
+                            type="text"
+                            id="titulo-caso"
+                            name="titulo-caso"
+                            required
+                        >
+                    </p>
+
+                    <p>
+                        <label for="categoria">Categoría del animal:</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="fauna-silvestre">
+                                Fauna silvestre
+                            </option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="fecha-reporte">Fecha del reporte:</label>
+                        <input
+                            type="date"
+                            id="fecha-reporte"
+                            name="fecha-reporte"
+                            required
+                        >
+                    </p>
+
+                    <p>
+                        <label for="zona">Zona o sector del hallazgo:</label>
+                        <input
+                            type="text"
+                            id="zona"
+                            name="zona"
+                            required
+                        >
+                    </p>
+
+                    <p>
+                        <label for="referencia">
+                            Referencia para localizar el lugar:
+                        </label>
+                        <input
+                            type="text"
+                            id="referencia"
+                            name="referencia"
+                            required
+                        >
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Nivel de urgencia médica</legend>
+
+                    <input
+                        type="radio"
+                        id="urgencia-alta"
+                        name="urgencia"
+                        value="alta"
+                        required
+                    >
+                    <label for="urgencia-alta">Alta</label>
+
+                    <input
+                        type="radio"
+                        id="urgencia-media"
+                        name="urgencia"
+                        value="media"
+                    >
+                    <label for="urgencia-media">Media</label>
+
+                    <input
+                        type="radio"
+                        id="urgencia-baja"
+                        name="urgencia"
+                        value="baja"
+                    >
+                    <label for="urgencia-baja">Baja</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Apoyo requerido</legend>
+
+                    <p>
+                        <label for="tipo-apoyo">Tipo de asistencia:</label>
+                        <select id="tipo-apoyo" name="tipo-apoyo" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="verificacion">
+                                Verificación del caso
+                            </option>
+                            <option value="rescate">
+                                Apoyo para el rescate
+                            </option>
+                            <option value="traslado">
+                                Traslado veterinario
+                            </option>
+                            <option value="alojamiento">
+                                Hogar temporal
+                            </option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="descripcion">
+                            Descripción del estado en que fue encontrado:
+                        </label>
+                        <br>
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            rows="7"
+                            cols="50"
+                            required
+                        ></textarea>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <button type="submit">Enviar alerta</button>
+                    <button type="reset">Limpiar datos</button>
+                </p>
+            </form>
+        </section>
+
+        <section>
+            <h2>Recomendaciones para el reporte</h2>
+
+            <article>
+                <h3>Describa el lugar</h3>
+                <p>
+                    Incluya una referencia que permita localizar el sitio
+                    sin dificultad.
+                </p>
+            </article>
+
+            <article>
+                <h3>No exponga su seguridad</h3>
+                <p>
+                    Evite manipular al animal si presenta lesiones,
+                    comportamiento defensivo o se trata de fauna silvestre.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Refugui Comunitario.</p>
+        <p>Red de apoyo para la protección animal.</p>
+    </footer>
+</body>
+</html>
